@@ -1,5 +1,8 @@
-# PSCore-QuckStart
-This project is a quick start for experienced coders new to the PowerShell syntax.
+# The QuickStart Demos
+
+The demos in this project are designed to be a "quick start" for learning PowerShell. Experienced developers already understand basic concepts such as variables, loops, and logic, and just need examples of how these constructs work in the world of PowerShell. 
+
+Code examples are broken into small files, to make for easy quick reference. Comments in the code help explain the example.
 
 ---
 
