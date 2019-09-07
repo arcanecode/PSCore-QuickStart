@@ -2,7 +2,7 @@
 
 The demos in this project are designed to be a "quick start" for learning PowerShell. Experienced developers already understand basic concepts such as variables, loops, and logic, and just need examples of how these constructs work in the world of PowerShell. 
 
-Code examples are broken into small files, to make for easy quick reference. Comments in the code help explain the example.
+Code examples are broken into small files, to make for easy quick reference. Comments in the code help explain the example.  
 
 ---
 
