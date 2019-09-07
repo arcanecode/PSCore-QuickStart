@@ -62,11 +62,12 @@ SELECT col1
 
 # String Interpolation ---------------------------------------------------------------------------------------------------
 # Set the directory for your computer / OS
+
 # Directory on Windows boxes
 $dir = 'C:\Users\arcan\OneDrive\PS\PSCore-QuickStart\PSCore-QuckStart\Demos'
 
 # Directory on Linux
-$dir = ''
+$dir = '/home/arcanecode/Documents/code/PSCore-QuickStart/PSCore-QuckStart/Demos/'
 
 # Directory on macOS
 $dir = ''

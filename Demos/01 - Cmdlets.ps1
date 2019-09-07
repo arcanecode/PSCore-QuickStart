@@ -43,7 +43,6 @@ Get-Help Get-Command -full
 
 # Some popular cmdlets
 Get-Process
-Get-ScheduledTask
 Get-ChildItem
 
 #-----------------------------------------------------------------------------#
@@ -52,11 +51,12 @@ Get-ChildItem
 #region Aliasing
 
 # Set the directory for your computer / OS
+
 # Directory on Windows boxes
 $dir = 'C:\Users\arcan\OneDrive\PS\PSCore-QuickStart\PSCore-QuckStart\Demos'
 
 # Directory on Linux
-$dir = ''
+$dir = '/home/arcanecode/Documents/code/PSCore-QuickStart/PSCore-QuckStart/Demos/'
 
 # Directory on macOS
 $dir = ''
@@ -98,6 +98,5 @@ Get-ChildItem | Where-Object { $_.Length -gt 1kb }
 Get-ChildItem | Where-Object { $_.Length -gt 1kb } | Sort-Object Length
 
 Get-ChildItem |
-  Where-Object { $_.Length -gt 10kb } |
+  Where-Object { $_.Length -gt 1kb } |
   Sort-Object Length
-
