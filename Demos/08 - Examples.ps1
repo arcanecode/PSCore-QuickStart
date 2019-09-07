@@ -4,7 +4,7 @@
 
   Author: Robert C. Cain | @ArcaneCode | arcanecode@gmail.com
           http://arcanecode.com
-          https://github.com/arcanecode/PSCore-QuckStart 
+          https://github.com/arcanecode/PSCore-QuickStart 
  
   This sample is Copyright (c) 2016, 2018 Robert C. Cain. All rights reserved.
   The code herein is for demonstration purposes. No warranty or guarentee
