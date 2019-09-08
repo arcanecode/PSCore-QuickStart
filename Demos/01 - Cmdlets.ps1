@@ -43,7 +43,6 @@ Get-Help Get-Command -full
 
 # Some popular cmdlets
 Get-Process
-Get-ScheduledTask
 Get-ChildItem
 
 #-----------------------------------------------------------------------------#
@@ -52,14 +51,15 @@ Get-ChildItem
 #region Aliasing
 
 # Set the directory for your computer / OS
+
 # Directory on Windows boxes
 $dir = 'C:\Users\arcan\OneDrive\PS\PSCore-QuickStart\PSCore-QuckStart\Demos'
 
 # Directory on Linux
-$dir = ''
+$dir = '/home/arcanecode/Documents/code/PSCore-QuickStart/PSCore-QuckStart/Demos/'
 
 # Directory on macOS
-$dir = ''
+$dir = '~/Documents/code/PSCore-QuickStart/PSCore-QuickStart/Demos'
 
 cd $dir 
 
@@ -67,10 +67,10 @@ cd $dir
 dir
 cls
 
-# On Windows/macOS, ls aliases, on Linux it uses the real ls command
+# On Windows, ls aliases, on Linux/macOS it uses the real ls command
 ls
 
-# But how? With command aliasing
+# But how? With command aliasingß
 # The aliases dir and ls both point to the cmdlet Get-Childitem
 Get-Alias dir
 
@@ -98,6 +98,5 @@ Get-ChildItem | Where-Object { $_.Length -gt 1kb }
 Get-ChildItem | Where-Object { $_.Length -gt 1kb } | Sort-Object Length
 
 Get-ChildItem |
-  Where-Object { $_.Length -gt 10kb } |
+  Where-Object { $_.Length -gt 1kb } |
   Sort-Object Length
-
