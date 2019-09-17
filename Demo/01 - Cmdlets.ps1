@@ -59,7 +59,7 @@ $dir = 'C:\Users\arcan\OneDrive\PS\PSCore-QuickStart\PSCore-QuckStart\Demos'
 $dir = '/home/arcanecode/Documents/code/PSCore-QuickStart/PSCore-QuckStart/Demos/'
 
 # Directory on macOS
-$dir = ''
+$dir = '~/Documents/code/PSCore-QuickStart/PSCore-QuickStart/Demos'
 
 cd $dir 
 
@@ -67,10 +67,10 @@ cd $dir
 dir
 cls
 
-# On Windows/macOS, ls aliases, on Linux it uses the real ls command
+# On Windows, ls aliases, on Linux/macOS it uses the real ls command
 ls
 
-# But how? With command aliasing
+# But how? With command aliasingß
 # The aliases dir and ls both point to the cmdlet Get-Childitem
 Get-Alias dir
 
