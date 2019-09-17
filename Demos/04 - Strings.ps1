@@ -3,7 +3,7 @@
   A quick look at the PowerShell platform
 
   Author: Robert C. Cain | @ArcaneCode | arcanecode@gmail.com
-          http://arcanecode.com
+          http://arcanecode.me
           https://github.com/arcanecode/PSCore-QuckStart 
  
   This sample is Copyright (c) 2016, 2018 Robert C. Cain. All rights reserved.
