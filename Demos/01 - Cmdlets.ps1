@@ -1,7 +1,7 @@
 <#-----------------------------------------------------------------------------
   PowerShell Quickstart
   A quick look at the PowerShell platform
-
+ 
   Author: Robert C. Cain | @ArcaneCode | arcanecode@gmail.com
           http://arcanecode.com
           https://github.com/arcanecode/PSCore-QuckStart 
