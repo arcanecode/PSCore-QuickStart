@@ -3,7 +3,7 @@
   A quick look at the PowerShell platform
 
   Author: Robert C. Cain | @ArcaneCode | arcanecode@gmail.com
-          http://arcanecode.com
+          http://arcanecode.me
           https://github.com/arcanecode/PSCore-QuckStart 
  
   This sample is Copyright (c) 2016, 2018 Robert C. Cain. All rights reserved.
@@ -14,26 +14,31 @@
 -----------------------------------------------------------------------------#>
 
 #-----------------------------------------------------------------------------#
-# Functions
+# Providers
 #-----------------------------------------------------------------------------#
-function Get-AValue($one, $two)
-{
-  return $one * $two
-}
 
-# To pass parameters, simply list the values with no commas
-Get-AValue 33 42
+#List default Providers
+Clear-Host
+Get-PSProvider
 
-# You can place the return value in a variable
-$returnValue = Get-AValue 33 42
-"Returned value is $returnValue"
+# Now show how these providers equate to "drives" we can navigate
+Clear-Host
+Get-PSDrive
 
-# Functions also support passing by name. Use the name of the variable
-# with a dash in front
-$returnValue = Get-AValue -one 11 -two 13
-"Returned value is $returnValue"
+# Move to the ENV (environmental variables) drive
+Clear-Host
+Set-Location env:
+Get-ChildItem
 
-# Using named parameters the order is not important
-$returnValue = Get-AValue -two 13 -one 11 
-"Returned value is $returnValue"
+# Set the location back to the drive from the env provider
 
+# Directory on Windows boxes
+$dir = 'C:\Users\arcan\OneDrive\PS\PSCore-QuickStart\PSCore-QuckStart\Demos'
+
+# Directory on Linux
+$dir = '/home/arcanecode/Documents/code/PSCore-QuickStart/PSCore-QuckStart/Demo/'
+
+# Directory on macOS
+$dir = '~/Documents/code/PSCore-QuickStart/PSCore-QuickStart/Demos'
+
+Set-Location $dir

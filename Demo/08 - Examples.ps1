@@ -3,8 +3,8 @@
   A quick look at the PowerShell platform
 
   Author: Robert C. Cain | @ArcaneCode | arcanecode@gmail.com
-          http://arcanecode.com
-          https://github.com/arcanecode/PSCore-QuckStart 
+          http://arcanecode.me
+          https://github.com/arcanecode/PSCore-QuickStart 
  
   This sample is Copyright (c) 2016, 2018 Robert C. Cain. All rights reserved.
   The code herein is for demonstration purposes. No warranty or guarentee
@@ -14,31 +14,12 @@
 -----------------------------------------------------------------------------#>
 
 #-----------------------------------------------------------------------------#
-# Providers
+# Something useful
 #-----------------------------------------------------------------------------#
 
-#List default Providers
-Clear-Host
-Get-PSProvider
+# See what is running that is taking up a lot of CPU
+Get-Process | Where-Object CPU -gt 25 
 
-# Now show how these providers equate to "drives" we can navigate
-Clear-Host
-Get-PSDrive
+# Test a web api
+Invoke-RestMethod 'http://feed.nashownotes.com/rss.xml'
 
-# Move to the ENV (environmental variables) drive
-Clear-Host
-Set-Location env:
-Get-ChildItem
-
-# Set the location back to the drive from the env provider
-
-# Directory on Windows boxes
-$dir = 'C:\Users\arcan\OneDrive\PS\PSCore-QuickStart\PSCore-QuckStart\Demos'
-
-# Directory on Linux
-$dir = '/home/arcanecode/Documents/code/PSCore-QuickStart/PSCore-QuckStart/Demos/'
-
-# Directory on macOS
-$dir = '~/Documents/code/PSCore-QuickStart/PSCore-QuickStart/Demos'
-
-Set-Location $dir

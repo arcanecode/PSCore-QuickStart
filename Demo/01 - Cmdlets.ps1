@@ -3,7 +3,7 @@
   A quick look at the PowerShell platform
  
   Author: Robert C. Cain | @ArcaneCode | arcanecode@gmail.com
-          http://arcanecode.com
+          http://arcanecode.me
           https://github.com/arcanecode/PSCore-QuckStart 
  
   This sample is Copyright (c) 2016, 2018 Robert C. Cain. All rights reserved.
@@ -57,10 +57,10 @@ Get-ChildItem
 $dir = 'C:\Users\arcan\OneDrive\PS\PSCore-QuickStart\PSCore-QuckStart\Demos'
 
 # Directory on Linux
-$dir = '/home/arcanecode/Documents/code/PSCore-QuickStart/PSCore-QuckStart/Demos/'
+$dir = '/home/arcanecode/Documents/code/PSCore-QuickStart/PSCore-QuckStart/Demo/'
 
 # Directory on macOS
-$dir = '~/Documents/code/PSCore-QuickStart/PSCore-QuickStart/Demos'
+$dir = '~/Documents/code/PSCore-QuickStart/PSCore-QuickStart/Demo'
 
 cd $dir 
 
