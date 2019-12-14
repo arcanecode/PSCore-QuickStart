@@ -6,7 +6,7 @@
           http://arcanecode.me
           https://github.com/arcanecode/PSCore-QuckStart 
  
-  This sample is Copyright (c) 2016, 2018 Robert C. Cain. All rights reserved.
+  This sample is Copyright (c) 2016, 2018, 2019 Robert C. Cain. All rights reserved.
   The code herein is for demonstration purposes. No warranty or guarentee
   is implied or expressly granted. 
   
