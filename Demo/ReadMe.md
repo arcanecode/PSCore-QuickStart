@@ -1,8 +1,6 @@
-# The QuickStart Demos
+# Demo Files Read Me
 
-The demos in this project are designed to be a "quick start" for learning PowerShell. Experienced developers already understand basic concepts such as variables, loops, and logic, and just need examples of how these constructs work in the world of PowerShell.
-
-Code examples are broken into small files, to make for easy quick reference. Comments in the code help explain the example.
+This folder contains the individual demo files. Please see the ReadMe in the root folder for more information.
 
 ---
 
@@ -24,7 +22,7 @@ LinkedIn: [http://arcanecode.in](http://arcanecode.in)
 
 ### Copyright Notice
 
-This document is Copyright (c) 2016, 2019, 2020 Robert C. Cain. All rights reserved.
+This document is Copyright (c) 2020 Robert C. Cain. All rights reserved.
 
 The code samples herein is for demonstration purposes. No warranty or guarantee is implied or expressly granted.
 

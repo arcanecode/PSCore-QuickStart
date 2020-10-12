@@ -1,21 +1,58 @@
-<#-----------------------------------------------------------------------------
+<#-----------------------------------------------------------------------------------------------
   PowerShell Quickstart
   A quick look at the PowerShell platform
 
   Author: Robert C. Cain | @ArcaneCode | arcanecode@gmail.com
           http://arcanecode.me
-          https://github.com/arcanecode/PSCore-QuckStart 
- 
-  This sample is Copyright (c) 2016, 2018 Robert C. Cain. All rights reserved.
-  The code herein is for demonstration purposes. No warranty or guarentee
-  is implied or expressly granted. 
-  This module may not be reproduced in whole or in part without the express
-  written consent of the author. 
------------------------------------------------------------------------------#>
+          https://github.com/arcanecode/PSCore-QuckStart
 
-#-----------------------------------------------------------------------------#
+  This sample is Copyright (c) 2016, 2018, 2019, 2020 Robert C. Cain.
+  All rights reserved.
+
+  The code herein is for demonstration purposes. No warranty or guarentee
+  is implied or expressly granted.
+
+  This module may not be reproduced in whole or in part without the express
+  written consent of the author.
+-----------------------------------------------------------------------------------------------#>
+
+<#
+  Normally you can use F5 to run the entire script, or F8 to run one or
+  more highlighted lines of code. This script is atypical in that it's just
+  a bunch of examples we only want to run via F8. So we'll add the next line
+  of code to stop running just in case someone accidentally hits F5.
+#>
+if ( 1 -eq 1 ) { exit }
+
+#------------------------------------------------------------------------------------------------
+# Code Formatting
+#------------------------------------------------------------------------------------------------
+
+# Note there are multiple ways to format your code. All of these are valid.
+if ( 1 -eq 1 ) { exit }
+
+if ( 1 -eq 1 )
+  { exit }
+
+if ( 1 -eq 1 )
+{ exit }
+
+if ( 1 -eq 1 ) {
+  exit
+}
+
+if ( 1 -eq 1 )
+{
+  exit
+}
+
+# You can have multiple commands on the same line using a semicolon
+$a = 'Hi'; $b = 'Mom'; "$a $b"
+
+#------------------------------------------------------------------------------------------------
 # Logic Branching
-#-----------------------------------------------------------------------------#
+#------------------------------------------------------------------------------------------------
+
 # if/else
 $var = 2
 if ($var -eq 1)  # Be sure to use -eq instead of =
@@ -40,9 +77,34 @@ switch  ($var)
   default {"default"}
 }
 
-#-----------------------------------------------------------------------------#
+# Beware multiple matches
+Clear-Host
+$var = 42                   # Also test with 43 and 49
+switch  ($var)
+{
+  41   {"Forty One"}
+  42   {"Forty Two"}
+  '42' {"Forty Two"}
+  43   {"Forty Three"}
+  default {"default"}
+}
+
+# Avoid by using a break
+Clear-Host
+$var = 42                   # Also test with 43 and 49
+switch  ($var)
+{
+  41   {"Forty One"; break}
+  42   {"Forty Two"; break}
+  '42' {"Forty Two"; break}
+  43   {"Forty Three"; break}
+  default {"default"; break}
+}
+
+#------------------------------------------------------------------------------------------------
 # Looping
-#-----------------------------------------------------------------------------#
+#------------------------------------------------------------------------------------------------
+
 # While
 Clear-Host
 $i = 1
@@ -54,7 +116,6 @@ while ($i -le 5)
 
 # Also supported:
 # do while
-# Do
 Clear-Host
 $i = 1
 do
@@ -88,18 +149,8 @@ foreach ($item in $array)
 }
 
 # foreach works with an array of objects
-# Set the directory for your computer / OS
-# Directory on Windows boxes
-$dir = 'C:\Users\arcan\OneDrive\PS\PSCore-QuickStart\PSCore-QuckStart\Demos'
-
-# Directory on Linux
-$dir = '/home/arcanecode/Documents/code/PSCore-QuickStart/PSCore-QuckStart/Demos/'
-
-# Directory on macOS
-$dir = '~/Documents/code/PSCore-QuickStart/PSCore-QuickStart/Demos'
-
+# Note set your location to the demo folder with the .ps1 files
 Clear-Host
-Set-Location $dir
 foreach ($file in Get-ChildItem)
 {
   $file.Name
