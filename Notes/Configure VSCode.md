@@ -176,6 +176,8 @@ If you have an existing file that is already full of tabs, select everything, th
 Convert Indentation to Spaces
 ```
 
+In addition, I also made extensive use of VSCode's user snippets. You can find my snippets plus an explanation on how to use them in my GitHub repository [VSCode User Snippets](https://github.com/arcanecode/VSCode_User_Snippets)
+
 ---
 
 ## Author Information
