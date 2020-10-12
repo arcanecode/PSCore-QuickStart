@@ -1,4 +1,4 @@
-# PSCore-QuckStart
+# PSCore-QuickStart
 
 This project is a quick start for experienced coders new to the PowerShell syntax. Files in the demo are broken into subjects. Each file has extensive comments that explain the concepts.
 
