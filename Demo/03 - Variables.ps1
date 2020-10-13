@@ -89,7 +89,7 @@ $var -gt 30
 $var -lt 30
 $var -eq 33
 
-# List is:
+# Most commonly used comparison operators:
 #   -eq        Equals
 #   -ne        Not equal to
 #   -lt        Less Than

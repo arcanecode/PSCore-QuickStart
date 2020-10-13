@@ -38,6 +38,12 @@ Enum MyTwitters
   N4IXT
 }
 
+# Get a list of the names
+[MyTwitters].GetEnumNames()
+
+# When no explicit values are assigned, the name is also the value
+[MyTwitters].GetEnumValues()
+
 # Note when typing the last : will trigger intellisense!
 $tweet = [MyTwitters]::ArcaneCode
 $tweet
@@ -48,6 +54,40 @@ $tweet
 # Set it to something invalid and see if it passes as an enum
 $tweet = 'Invalid'
 [enum]::IsDefined(([MyTwitters]), $tweet)
+
+# It's also possible to assign values
+Enum MyColors
+{
+  Red = 1
+  Blue = 2
+  Green = 3
+}
+
+# As before you can list the names
+[MyColors].GetEnumNames()
+
+# Now if you use the get values, it looks like it returns the labels too...
+[MyColors].GetEnumValues()
+
+# But when you assign a value to a label, it's the value returned, i.e.:
+[MyColors]::Green -eq 3      # should be true
+
+# You can assign the same value to several enums if you need to
+Enum Folks
+{
+  Adam = 1
+  John = 1
+  Robert = 2
+  Alma = 2
+  Raven = 3
+  Anna = 3
+  Jack = 3
+}
+
+# All True
+[Folks]::Adam -eq 1
+[Folks]::John -eq 1
+[Folks]::Adam -eq [Folks]::John
 
 #endregion Enum
 

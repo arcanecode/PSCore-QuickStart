@@ -84,7 +84,6 @@ Get-BValue -one 33 -two 42
 
 # Example 2 pass in value for one, take default for two
 Get-BValue -one 33
-
 # Example 3 no params, will prompt for one and take default for two
 Get-BValue
 
@@ -98,6 +97,7 @@ function Get-PSFiles ()
   param ( [Parameter (ValueFromPipeline)]
           $file
         )
+
                      # No parameters
 
   begin  { }
@@ -136,7 +136,7 @@ function Get-AName ()
 }
 
 Get-ChildItem | Get-AName
-Get-Service | Get-AName
+Get-Process | Get-AName
 
 # Using the pipeline to format text, demo the begin and end -------------------------------------
 function Show-BName ()
@@ -158,4 +158,4 @@ function Show-BName ()
 }
 
 Get-ChildItem | Show-BName
-Get-Service | Show-BName
+Get-Process | Show-BName
