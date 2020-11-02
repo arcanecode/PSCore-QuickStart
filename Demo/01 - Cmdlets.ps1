@@ -48,6 +48,10 @@ if ( 1 -eq 1 ) { exit }
 # Verb-Noun syntax
 Get-Command
 
+# Prior to running Get-Help the first time, you need to update the help files using the following
+# cmdlet. Note for a while this didn't work in Ubuntu, but has now been fixed.
+Update-Help
+
 Get-Help Get-Command
 
 Get-Help Get-Command -Full
