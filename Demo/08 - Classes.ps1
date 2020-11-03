@@ -41,9 +41,6 @@ Enum MyTwitters
 # Get a list of the names
 [MyTwitters].GetEnumNames()
 
-# When no explicit values are assigned, the name is also the value
-[MyTwitters].GetEnumValues()
-
 # Note when typing the last : will trigger intellisense!
 $tweet = [MyTwitters]::ArcaneCode
 $tweet
