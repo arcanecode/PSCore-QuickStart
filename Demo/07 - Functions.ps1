@@ -63,7 +63,7 @@ function Get-BValue()
           ]
           [int] $one
         , [Parameter( Mandatory = $false
-                    , HelpMessage = 'Please enter value one.'
+                    , HelpMessage = 'Please enter value two.'
                    )
           ]
           [int] $two = 42
@@ -84,6 +84,7 @@ Get-BValue -one 33 -two 42
 
 # Example 2 pass in value for one, take default for two
 Get-BValue -one 33
+
 # Example 3 no params, will prompt for one and take default for two
 Get-BValue
 
@@ -97,8 +98,6 @@ function Get-PSFiles ()
   param ( [Parameter (ValueFromPipeline)]
           $file
         )
-
-                     # No parameters
 
   begin  { }
 
@@ -123,7 +122,6 @@ function Get-AName ()
   param ( [Parameter (ValueFromPipelineByPropertyName)]
           $Name
         )
-                     # No parameters
 
   begin  { }
 
@@ -145,7 +143,6 @@ function Show-BName ()
   param ( [Parameter (ValueFromPipelineByPropertyName)]
           $Name
         )
-                     # No parameters
 
   begin  { Write-Host 'Here are the names!' -ForegroundColor Green }
 

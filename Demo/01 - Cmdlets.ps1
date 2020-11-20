@@ -50,20 +50,22 @@ Get-Command
 
 # Prior to running Get-Help the first time, you need to update the help files using the following
 # cmdlet. Note for a while this didn't work in Ubuntu, but has now been fixed.
-Update-Help
+Update-Help -ErrorAction SilentlyContinue
 
 Get-Help Get-Command
 
 Get-Help Get-Command -Full
 
+Get-Help Get-Command -Online
+
 # Some popular cmdlets
 Get-Process
 Get-ChildItem
 
+#region Aliasing
 #------------------------------------------------------------------------------------------------
 # Alias
 #------------------------------------------------------------------------------------------------
-#region Aliasing
 
 # Notice how older DOS/Linux commands work in PowerShell
 dir
@@ -72,7 +74,7 @@ cls
 # On Windows, ls aliases, on Linux/macOS it uses the real ls command
 ls
 
-# But how? With command aliasingß
+# But how? With command aliasing
 # The aliases dir and ls both point to the cmdlet Get-Childitem
 Get-Alias dir
 
@@ -91,14 +93,30 @@ Get-Alias
 
 #endregion Aliasing
 
+#region Pipelining
 #------------------------------------------------------------------------------------------------
 # Cmdlet Pipelining
 #------------------------------------------------------------------------------------------------
 Set-Location "$pwd/Demo"
-Get-ChildItem | Where-Object { $_.Length -gt 1kb }
 
-Get-ChildItem | Where-Object { $_.Length -gt 1kb } | Sort-Object Length
+# Get-ChildItem doesn't return text, it returns an array (aka collection) of file system objects
+Get-ChildItem
 
+# Method 1
+Get-ChildItem | Where-Object { $_.Length -gt 4kb }
+
+# Method 2
+Get-ChildItem | Where-Object -Property Length -gt -Value 4kb
+
+# Method 3
+Get-ChildItem | Where-Object Length -gt 4kb
+
+# Adding to the pipeline
+Get-ChildItem | Where-Object Length -gt 4kb | Sort-Object Length
+
+# Wrapping lines on the pipeline - pipe must be last character on the line
 Get-ChildItem |
-  Where-Object { $_.Length -gt 1kb } |
+  Where-Object { $_.Length -gt 4kb } |
   Sort-Object Length
+
+#endregion Pipelining

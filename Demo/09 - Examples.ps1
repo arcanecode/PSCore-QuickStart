@@ -54,9 +54,15 @@ $co | Format-Table
 # Convert the CSV to JSON
 $co | ConvertTo-Json | Out-File 'Company.json' -Force
 
+# One Liner
+Import-Csv 'Company.csv' | ConvertTo-Json #| Out-File 'Company.json' -Force
+
 #------------------------------------------------------------------------------------------------
-# Create new objects frome existing ones
+# Create new objects from existing ones
 #------------------------------------------------------------------------------------------------
+
+# Get the original list of properties
+$co | Get-Member
 
 # Limit the number of fields then sort them
 $coShort = $co | Select-Object -Property State, Name | Sort-Object -Property State, Name

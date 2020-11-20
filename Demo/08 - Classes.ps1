@@ -93,12 +93,12 @@ Enum Folks
 #------------------------------------------------------------------------------------------------
 # Basic Class
 #------------------------------------------------------------------------------------------------
-  
-Class Twitterer
+
+class Twitterer
 {
   # Create a property
   [string]$TwitterHandle
-  
+
   # Create a property and set a default value
   [string]$Name = 'Robert C. Cain'
 
@@ -120,7 +120,7 @@ Class Twitterer
 $twit = [Twitterer]::new()
 $twit.TwitterHandle = 'ArcaneCode'
 $twit.TwitterHandle
-  
+
 # See default property value
 $twit.Name
 
@@ -144,7 +144,7 @@ $twit.OpenTwitter()
 #   Overloaded Methods
 #------------------------------------------------------------------------------------------------
 
-Class TwittererRedux
+class TwittererRedux
 {
   # Default Constructor
   TwittererRedux ()
@@ -166,7 +166,7 @@ Class TwittererRedux
 
   # Create a property
   [string]$TwitterHandle
-  
+
   # Create a property and set a default value
   [string]$Name = 'Robert C. Cain'
 

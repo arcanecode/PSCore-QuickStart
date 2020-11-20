@@ -74,7 +74,7 @@ SELECT col1
 #------------------------------------------------------------------------------------------------
 # String Interpolation
 #------------------------------------------------------------------------------------------------
-# Set your directory location to the Demos folder
+# Set your directory location to the Demo folder
 Clear-Host
 
 # Take the output of Get-ChildItem, which is an object, and gets that objects count property

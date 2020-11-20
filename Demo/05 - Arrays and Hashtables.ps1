@@ -56,14 +56,22 @@ $empty
 #------------------------------------------------------------------------------------------------
 Clear-Host
 
-$hash = @{"Key"         = "Value";
-          "PowerShell"  = "PowerShell.com";
-          "Arcane Code" = "arcanecode.com"}
+$hash = @{'Key'         = 'Value'
+          'PowerShell'  = 'PowerShell.com'
+          'Arcane Code' = 'arcanecode.com'
+         }
 
 $hash                  # Display all values
 $hash['PowerShell']    # Get a single value from the key
 
-$hash.'Arcane Code'    # Get single value using object syntax
+$hash.PowerShell       # Get single value using object syntax
+$hash.'Arcane Code'
+
+$hash.'Arcane Code' = 'arcanecode.me'
+
+# Get all the keys and values
+$hash.Keys
+$hash.Values
 
 # Empty Hashtable
 $empty = @{}
@@ -72,3 +80,4 @@ $empty
 $empty['Pluralsight'] = 'pluralsight.com'
 $empty['DataFabricator'] = 'datafabricator.com'
 $empty
+
