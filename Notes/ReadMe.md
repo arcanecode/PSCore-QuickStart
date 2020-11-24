@@ -4,6 +4,10 @@ The demos in this project are designed to be a "quick start" for learning PowerS
 
 Code examples are broken into small files, to make for easy quick reference. Comments in the code help explain the example.
 
+This folder, Notes, contains additional documentation that users may find helpful but were not part of the Pluralsight course.
+
+This project is included in my Pluralsight course "PowerShell 7 Quick Start for Developers on Linux, macOS, and Windows". See my [About Me](http://arcanecode.me) page for a link to the course.
+
 ---
 
 ## Author Information

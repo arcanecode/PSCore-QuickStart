@@ -2,7 +2,7 @@
 
 This project is a quick start for experienced coders new to the PowerShell syntax. Files in the demo are broken into subjects. Each file has extensive comments that explain the concepts.
 
-This project is included in my Pluralsight course "Everyday PowerShell 7 for Developers". See my [About Me](http://arcanecode.me) page for a link to the course.
+This project is included in my Pluralsight course "PowerShell 7 Quick Start for Developers on Linux, macOS, and Windows". See my [About Me](http://arcanecode.me) page for a link to the course.
 
 ---
 

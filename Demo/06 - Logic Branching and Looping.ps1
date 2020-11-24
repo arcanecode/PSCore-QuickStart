@@ -1,6 +1,6 @@
 <#-----------------------------------------------------------------------------------------------
-  PowerShell Quickstart
-  A quick look at the PowerShell platform
+  PowerShell 7 Quick Start for Developers on Linux, macOS and Windows
+  Logic Branching and Looping
 
   Author: Robert C. Cain | @ArcaneCode | arcanecode@gmail.com
           http://arcanecode.me

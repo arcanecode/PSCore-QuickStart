@@ -2,6 +2,8 @@
 
 This folder contains the individual demo files. Please see the ReadMe in the root folder for more information.
 
+This project is included in my Pluralsight course "PowerShell 7 Quick Start for Developers on Linux, macOS, and Windows". See my [About Me](http://arcanecode.me) page for a link to the course.
+
 ---
 
 ## Author Information
