@@ -72,6 +72,15 @@ SELECT col1
 '@
 
 #------------------------------------------------------------------------------------------------
+# Embedded Quote Marks
+#------------------------------------------------------------------------------------------------
+# You can embed quotation marks in a string by doubling them up
+
+"ArcaneCode said ""PowerShell is awesome!"" and the crowd applauded."
+
+'You shouldn''t miss the blog posts at arcanecode.com'
+
+#------------------------------------------------------------------------------------------------
 # String Interpolation
 #------------------------------------------------------------------------------------------------
 # Set your directory location to the Demo folder
