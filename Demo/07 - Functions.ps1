@@ -35,6 +35,9 @@ function Get-AValue($one, $two)
 # To pass parameters, simply list the values with no commas
 Get-AValue 33 42
 
+# You can embed the call in a string
+"Returned value is $(Get-AValue 33 42)"
+
 # You can place the return value in a variable
 $returnValue = Get-AValue 33 42
 "Returned value is $returnValue"
@@ -47,6 +50,104 @@ $returnValue = Get-AValue -one 11 -two 13
 # Using named parameters the order is not important
 $returnValue = Get-AValue -two 13 -one 11
 "Returned value is $returnValue"
+
+# The return keyword is not required
+function Get-AValue($one, $two)
+{
+  $one * $two
+}
+
+$returnValue = Get-AValue 33 42
+"Returned value is $returnValue"
+
+# Whatever the isn't consumed (i.e. assigned to a variable) is returned
+# This can get confusing and could have odd side effects
+function Get-AValue($one, $two)
+{
+  $one * $two
+  "Hello from Get-AValue"
+}
+
+$returnValue = Get-AValue 33 42
+"Returned value is $returnValue"
+
+# Return does two things for you.
+# 1. It speaks of clear intent. I didn't forget to finish some code, I've set an exit point.
+# 2. I have full control over when / where code exits.
+
+# For example, you could do this
+function Get-AValue($one, $two)
+{
+  if ($one -eq 33)
+    { return $one + $two }
+  else
+    { return $one + $two }
+
+  "Hello from Get-AValue"
+}
+
+$returnValue = Get-AValue 33 42
+"Returned value is $returnValue"
+
+# Although best coding practices says you should have one exit point, so instead craft
+# your function like:
+function Get-AValue($one, $two)
+{
+  if ($one -eq 33)
+    { $retVal = $one + $two }
+  else
+    { $retVal = $one + $two }
+
+  return $retVal
+}
+
+$returnValue = Get-AValue 33 42
+"Returned value is $returnValue"
+
+# You can have multiple functions in the same file, and one function can call another
+function Format-FileOutput($files)
+{
+  # Find the max length of a file name
+  $maxLength = Get-MaxFileNameLength $files
+
+  Write-Host "`r`nHere is the file output`r`n"
+  $padding = (' ' * ($maxLength + 1))
+  Write-Host "File Name $($padding) Size"
+  Write-Host ('-' * ($maxLength + 16))
+
+  foreach($file in $files)
+  {
+    Format-FileLine $file $maxLength
+  }
+}
+
+function Get-MaxFileNameLength($files)
+{
+  $maxLength = 0
+
+  foreach($file in $files)
+  {
+    if ($file.Name.Length -gt $maxLength)
+      { $maxLength = $file.Name.Length }
+  }
+
+  return $maxLength
+}
+
+function Format-FileLine($file, $maxFileNameLength)
+{
+  # +1 will ensure there is always at least one space between
+  # the file name and the size
+  $spaces = ' ' * ($maxFileNameLength - $file.Name.Length + 1)
+  $retVal = "$($file.Name)$($spaces){0,15:N0}" -f $file.Length
+
+  return $retVal
+}
+
+$myfiles = Get-ChildItem
+Format-FileOutput $myfiles
+
+
 
 #------------------------------------------------------------------------------------------------
 # Advanced Functions
@@ -69,13 +170,7 @@ function Get-BValue()
           [int] $two = 42
         )
 
-  begin { }
-
-  process {
-            return $one * $two
-          }
-
-  end { }
+  return $one * $two
 
 }
 
@@ -101,18 +196,22 @@ function Get-PSFiles ()
 
   begin  { }
 
-  process {
-            if ($file.Name -like "*.ps1")
-            {
-              $retval = "`tPowerShell file is $($file.Name)"
-              $retval  # This is the equivalent of: return $retval
-            }
-          }
+  process
+  {
+    if ($file.Name -like "*.ps1")
+    {
+      $retval = "  PowerShell file is $($file.Name)"
+      # This is the equivalent of: return $retval
+      $retval
+    }
+  }
 
   end { }
 }
 
 $output = Get-ChildItem | Get-PSFiles
+$output
+
 $output.GetType()
 
 # Passing in just a single property from the pipeline -------------------------------------------
@@ -144,15 +243,100 @@ function Show-BName ()
           $Name
         )
 
-  begin  { Write-Host 'Here are the names!' -ForegroundColor Green }
+  begin
+  {
+    Write-Host 'Here are the names!' `
+      -ForegroundColor Green
+    $names = @()
+  }
 
-  process {
-            Write-Host "`tYou passed in " -ForegroundColor White -NoNewline
-            Write-Host $Name -ForegroundColor Yellow
-          }
+  process
+  {
+    $names += $name
+    "  Here is the name: $name"
+  }
 
-  end { Write-Host 'Those were the names you passed in' -ForegroundColor Green }
+  end
+  {
+    Write-Host "Those were the names you passed in:" `
+      -ForegroundColor Green
+    foreach ($n in $names)
+    {
+       Write-Host "  You passed in " `
+         -ForegroundColor White -NoNewline
+      Write-Host $n -ForegroundColor Yellow
+    }
+  }
 }
 
-Get-ChildItem | Show-BName
+Get-ChildItem |
+  Show-BName |
+  Sort-Object -Descending
+
+
 Get-Process | Show-BName
+
+#------------------------------------------------------------------------------------------------
+# Switches
+#------------------------------------------------------------------------------------------------
+Write-Host 'Hi Mom' -ForegroundColor Green -NoNewline
+Write-Host ' and Dad' -ForegroundColor Yellow
+
+function Get-RandomSouthAmericanCountry()
+{
+  [CmdletBinding()]
+  param(
+         [switch] $UpperCase
+       )
+
+  $array = (
+    'Argentina', 'Bolivia', 'Brazil',
+    'Chile', 'Columbia', 'Ecuador',
+    'Guyana', 'Paraguay', 'Peru',
+    'Suriname', 'Uruguay', 'Venezuela'
+  )
+
+  # Get an item from the array and convert from
+  # a generic object to a string
+  $retVal = $($array | Get-Random).ToString()
+
+  # If user passed in upper case switch,
+  # upper case return value
+  if ($UpperCase.IsPresent)
+  {
+    $retVal = $retVal.ToUpper()
+  }
+
+  return $retVal
+
+}
+
+Get-RandomSouthAmericanCountry
+Get-RandomSouthAmericanCountry -UpperCase
+
+function Get-RandomSouthAmericanCountryBasic([switch] $UpperCase)
+{
+  $array = (
+    'Argentina', 'Bolivia', 'Brazil',
+    'Chile', 'Columbia', 'Ecuador',
+    'Guyana', 'Paraguay', 'Peru',
+    'Suriname', 'Uruguay', 'Venezuela'
+  )
+
+  # Get an item from the array and convert from
+  # a generic object to a string
+  $retVal = $($array | Get-Random).ToString()
+
+  # If user passed in upper case switch,
+  # upper case return value
+  if ($UpperCase.IsPresent)
+  {
+    $retVal = $retVal.ToUpper()
+  }
+
+  return $retVal
+
+}
+
+Get-RandomSouthAmericanCountryBasic
+Get-RandomSouthAmericanCountryBasic -UpperCase

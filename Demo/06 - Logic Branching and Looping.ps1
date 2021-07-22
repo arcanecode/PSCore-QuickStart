@@ -66,7 +66,29 @@ else
   "else branch"
 }
 
+# if/elseif/else
+$var = 2
+if ($var -eq 1)  # Be sure to use -eq instead of =
+{
+  Clear-Host
+  "If branch"
+}
+elseif ($var -eq 33)
+{
+  Clear-Host
+  "elseif branch"
+}
+else
+{
+  Clear-Host
+  "else branch"
+}
+
+
+
+#------------------------------------------------------------------------------------------------
 # Switch statement for multiple conditions
+#------------------------------------------------------------------------------------------------
 Clear-Host
 $var = 42                   # Also test with 43 and 49
 switch  ($var)
@@ -101,6 +123,27 @@ switch  ($var)
   default {"default"; break}
 }
 
+"Exit to this point"
+
+# Type coertion
+$var = '42'
+switch  ($var)
+{
+  41   {"Forty One"}
+  42   {"Forty Two"}
+  43   {"Forty Three"}
+  default {"default"}
+}
+
+$var = '042'
+switch  ($var)
+{
+  41   {"Forty One"}
+  42   {"Forty Two"}
+  43   {"Forty Three"}
+  default {"default"}
+}
+
 #------------------------------------------------------------------------------------------------
 # Looping
 #------------------------------------------------------------------------------------------------
@@ -117,7 +160,7 @@ while ($i -le 5)
 # Also supported:
 # do while
 Clear-Host
-$i = 1
+$i = 33
 do
 {
   "`$i = $i"
