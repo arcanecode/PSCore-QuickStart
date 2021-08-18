@@ -340,3 +340,131 @@ function Get-RandomSouthAmericanCountryBasic([switch] $UpperCase)
 
 Get-RandomSouthAmericanCountryBasic
 Get-RandomSouthAmericanCountryBasic -UpperCase
+
+#------------------------------------------------------------------------------------------------
+# Write-Verbose
+#------------------------------------------------------------------------------------------------
+
+function Show-FileInfo ()
+{
+  [CmdletBinding()]
+  param ( [Parameter (ValueFromPipeline)]
+          $file
+        )
+
+  begin
+  {
+    $fn = "$($PSCmdlet.MyInvocation.MyCommand.Name)"
+    $st = Get-Date
+    Write-Verbose @"
+  `r`n  Function: $fn
+  Starting at $($st.ToString('yyyy-MM-dd hh:mm:ss tt'))
+"@
+  }
+
+  process
+  {
+    $retVal = "$($file.Name) is {0:N0} bytes long." -f $file.Length
+    $retVal
+  }
+
+  end
+  {
+    $et = Get-Date
+
+    $rt = $et - $st  # Run Time
+
+    # Format the output time
+    if ($rt.TotalSeconds -lt 1)
+      { $elapsed = "$($rt.TotalMilliseconds.ToString('#,0.0000')) Milliseconds" }
+    elseif ($rt.TotalSeconds -gt 60)
+      { $elapsed = "$($rt.TotalMinutes.ToString('#,0.0000')) Minutes" }
+    else
+      { $elapsed = "$($rt.TotalSeconds.ToString('#,0.0000')) Seconds" }
+
+
+    Write-Verbose @"
+  `r`n  Function: $fn
+  Finished at $($et.ToString('yyyy-MM-dd hh:mm:ss tt'))
+  Elapsed Time $elapsed
+"@
+  }
+}
+
+Get-ChildItem | Show-FileInfo -Verbose
+
+#     $fn = "$($PSCmdlet.MyInvocation.MyCommand.Module) - $($PSCmdlet.MyInvocation.MyCommand.Name)"
+
+#------------------------------------------------------------------------------------------------
+# Write-Debug
+#------------------------------------------------------------------------------------------------
+
+function Show-FileInfo ()
+{
+  [CmdletBinding()]
+  param ( [Parameter (ValueFromPipeline)]
+          $file
+        )
+
+  begin
+  {
+    $currentDebugPreference = $DebugPreference
+    $fn = "$($PSCmdlet.MyInvocation.MyCommand.Name)"
+    $st = Get-Date
+    Write-Verbose @"
+  `r`n  Function: $fn
+  Starting at $($st.ToString('yyyy-MM-dd hh:mm:ss tt'))
+"@
+  }
+
+  process
+  {
+    if ($file.Length -gt 100000)
+      { $DebugPreference = 'Inquire' }
+    else 
+      { $DebugPreference = 'SilentlyContinue' }
+
+    $dbgMsg = @"
+`r`n  Function.......: $fn
+  File Name......: $($file.FullName)
+  File Length....: $("{0:N0} bytes." -f $file.Length)
+  DebugPreference: $DebugPreference
+  PS Version.....: $($PSVersionTable.PSVersion.ToString())
+"@
+
+    Write-Debug -Message $dbgMsg
+
+    $retVal = "$($file.Name) is {0:N0} bytes long." -f $file.Length
+    $retVal
+  }
+
+  end
+  {
+    $DebugPreference = $currentDebugPreference
+    $et = Get-Date
+    $rt = $et - $st  # Run Time
+
+    # Format the output time
+    if ($rt.TotalSeconds -lt 1)
+      { $elapsed = "$($rt.TotalMilliseconds.ToString('#,0.0000')) Milliseconds" }
+    elseif ($rt.TotalSeconds -gt 60)
+      { $elapsed = "$($rt.TotalMinutes.ToString('#,0.0000')) Minutes" }
+    else
+      { $elapsed = "$($rt.TotalSeconds.ToString('#,0.0000')) Seconds" }
+
+    Write-Verbose @"
+  `r`n  Function: $fn
+  Finished at $($et.ToString('yyyy-MM-dd hh:mm:ss tt'))
+  Elapsed Time $elapsed
+"@
+  }
+}
+
+$DebugPreference = 'Continue'
+Get-ChildItem -Path 'C:\Demo' | Show-FileInfo -Verbose -Debug
+$DebugPreference
+
+Get-ChildItem -Path 'C:\Demo' | Show-FileInfo
+Get-ChildItem -Path 'C:\Demo' | Show-FileInfo -Debug
+Get-ChildItem -Path 'C:\Demo' | Show-FileInfo -Verbose
+Get-ChildItem -Path 'C:\Demo' | Show-FileInfo -Verbose -Debug
